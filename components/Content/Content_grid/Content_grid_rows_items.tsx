@@ -4,7 +4,7 @@ import Checked from '@/components/Checked';
 import Content_grid_rows_items_spec from './Content_grid_rows_items_spec';
 import Content_grid_rows_items_letter from './Content_grid_rows_items_letter';
 import { IDataRow } from '../../Types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Props {
 	data: IDataRow,
@@ -16,6 +16,23 @@ export default function Content_grid_rows_items({ data:{ name, specialities, day
 	// **************************************************
 
 	/* Eventos */
+	useEffect(
+		() => {
+			const handleChangeCheck = ( event:any ) => {
+				const [value] = event._params;
+
+				setIsChecked( value );
+			};
+
+			window.addEventListener( 'ChangeCheck', handleChangeCheck );
+
+			return () => {
+				window.removeEventListener( 'ChangeCheck', handleChangeCheck );
+			};
+		},
+		[]
+	);
+
 	function onChangeCheck( value:boolean ) {
 		setIsChecked( value );
 	}
@@ -31,7 +48,7 @@ export default function Content_grid_rows_items({ data:{ name, specialities, day
 			}}
 		>
 			<div className="name flex-1 text-xs flex items-center gap-2">
-				<Checked onChange={onChangeCheck}></Checked>
+				<Checked onChange={onChangeCheck} checked={isChecked}></Checked>
 				<Content_grid_rows_items_letter name={name}></Content_grid_rows_items_letter>
 				{name}
 			</div>

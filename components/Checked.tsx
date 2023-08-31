@@ -1,17 +1,25 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
 	onChange?: (value:boolean)=>void,
+	checked ?: boolean,
 };
 
-export default function Checked( { onChange }:Props ) {
+export default function Checked( { onChange, checked }:Props ) {
 	/* Declaraciones */
 	const [valueInput,setValueInput] = useState( false );
 	// **************************************************
 
 	/* Eventos */
+	useEffect(
+		() => {
+			setValueInput( !!checked );
+		},
+		[checked]
+	);
+
 	function onChangeInput( event:React.ChangeEvent<HTMLInputElement> ) {
 		const newState = event.target.checked;
 
