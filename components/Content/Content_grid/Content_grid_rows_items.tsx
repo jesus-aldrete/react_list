@@ -2,15 +2,10 @@
 
 import Checked from '@/components/Checked';
 import Content_grid_rows_items_spec from './Content_grid_rows_items_spec';
+import { IDataRow } from '../../Types';
 
-interface iDataRow {
-	availability: boolean,
-	day_rate    : string,
-	name        : string,
-	specialities: Array<string>,
-};
 interface Props {
-	data: iDataRow,
+	data: IDataRow,
 };
 
 export default function Content_grid_rows_items({ data:{ name, specialities, day_rate, availability } }:Props) {
