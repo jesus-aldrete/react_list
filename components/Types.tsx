@@ -1,6 +1,12 @@
+export enum EStateOrder {
+	NoOrder = 0,
+	Acending = 1,
+	Decending = 2,
+}
+
 export interface IDataRow {
 	availability: boolean,
-	day_rate    : string,
+	day_rate    : number,
 	name        : string,
 	specialities: Array<string>,
 }
@@ -19,4 +25,9 @@ export interface IQueryContractors {
 
 export interface IQueryResultContractors {
 	data: IQueryContractors,
+}
+
+export interface IRequestOrder {
+	value: string,
+	state: EStateOrder,
 }
