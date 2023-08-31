@@ -1,7 +1,26 @@
+"use client"
+
 import Content_input_search from './Content_input_search';
 import Content_grid from './Content_grid/Content_grid';
+import { useEffect } from 'react';
 
 export default function Content() {
+	/* Eventos */
+	useEffect(
+		() => {
+			( window as any ).Trigger = function( event:string, ...params:Array<any> ) {
+				if ( typeof event==='string' && event!='' ) {
+					const evt:any = new Event( event, { bubbles:true, cancelable:false } );
+					evt._params   = params;
+
+					this.dispatchEvent( evt );
+				}
+			};
+		},
+		[]
+	);
+	// **************************************************
+
 	return (
 		<div className="flex-1 flex items-center justify-center relative overflow-hidden">
 			<div className="absolute w-full h-1/2 top-0 bg-[#FFF] z-0"></div>

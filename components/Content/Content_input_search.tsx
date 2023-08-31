@@ -23,6 +23,21 @@ export default function Content_input_search() {
 
 		inputRef.current?.focus();
 	}
+
+	async function onClickFilter() {
+		const res = await fetch( '/api/filter', {
+			method : 'POST',
+			headers: { "Content-Type": "application/json" },
+			body   : JSON.stringify({ value:valueInput }),
+		});
+
+		if ( !res.ok ) {
+			console.error( await res.text() );
+			return;
+		}
+
+		( window as any ).Trigger( 'NewData', await res.json() );
+	}
 	// **************************************************
 
 	/* Render */
@@ -49,7 +64,10 @@ export default function Content_input_search() {
 					/>
 				</div>
 			</div>
-			<button className="flex items-center px-6 py-3 bg-[#F8F8F8] rounded-lg gap-3 duration-[.3s] ease-out hover:bg-[#E1E1E1] active:transition-none active:bg-[#C9C9C9]">
+			<button
+				className="flex items-center px-6 py-3 bg-[#F8F8F8] rounded-lg gap-3 duration-[.3s] ease-out hover:bg-[#E1E1E1] active:transition-none active:bg-[#C9C9C9]"
+				onClick={onClickFilter}
+			>
 				<span>Filters</span>
 				<img src="./icons/sliders.svg" alt="" />
 			</button>
