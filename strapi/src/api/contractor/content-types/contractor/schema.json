@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contractors",
+  "info": {
+    "singularName": "contractor",
+    "pluralName": "contractors",
+    "displayName": "Contractor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "specialities": {
+      "type": "json"
+    },
+    "day_rate": {
+      "type": "float"
+    },
+    "availability": {
+      "type": "boolean"
+    }
+  }
+}
