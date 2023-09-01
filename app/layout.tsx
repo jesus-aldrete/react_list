@@ -1,4 +1,6 @@
 import './globals.css';
+import Header from '@/components/Header/Header';
+import Menu from '@/components/Menu/Menu';
 
 export const metadata = {
   title: 'Teqqed',
@@ -10,9 +12,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<body className='flex flex-col h-full w-full absolute'>
+				<Header></Header>
+				<Menu></Menu>
+				{children}
+			</body>
+		</html>
+	);
 }
