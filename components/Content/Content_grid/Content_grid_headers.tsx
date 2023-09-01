@@ -15,6 +15,7 @@ export default function Content_grid_headers( { onChange }:Props ) {
 	}
 	// **************************************************
 
+	/* Render */
 	return (
 		<div className="flex items-center px-6 py-3 gap-1">
 			<Content_grid_headers_item first={true}>

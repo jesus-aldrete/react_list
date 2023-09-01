@@ -9,11 +9,13 @@ interface Props {
 	width_column?: number,
 }
 
-
 export default function Content_grid_headers_item({ children, first, width_column }:Props) {
+	/* Declaraciones */
 	const divRef = useRef<HTMLDivElement>( null );
 	const [stateOrder,setStateOrder] = useState<EStateOrder>( EStateOrder.NoOrder );
+	// **************************************************
 
+	/* Eventos */
 	async function onClickIcon() {
 		let newState = EStateOrder.NoOrder;
 
@@ -41,7 +43,9 @@ export default function Content_grid_headers_item({ children, first, width_colum
 
 		( window as any ).Trigger( 'NewData', await res.json() );
 	}
+	// **************************************************
 
+	/* Render */
 	return (
 		<div
 			ref={divRef}
